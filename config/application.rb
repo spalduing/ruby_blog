@@ -1,6 +1,5 @@
-require_relative "boot"
-
-require "rails/all"
+require_relative 'boot'
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,8 +7,13 @@ Bundler.require(*Rails.groups)
 
 module RubyBlog
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    # # Load dotenv only in development or test environment
+    # Dotenv::Railtie.load if %w[development test].include? ENV['RAILS_ENV']
+
+    # BASIC_AUTH_USER = ENV['BASIC_AUTH_USER']
+    # BASIC_AUTH_PASSWORD = ENV['BASIC_AUTH_PASSWORD']
 
     # Configuration for the application, engines, and railties goes here.
     #
