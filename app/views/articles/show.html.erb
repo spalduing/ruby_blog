@@ -1,11 +1,12 @@
 <%= render @article %>
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
+<div class="container">
+<%= link_to "Edit", edit_article_path(@article),  class:"btn btn-primary btn-sm" %>
+<%= link_to "Destroy", article_path(@article), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+                  },  class:"btn btn-danger btn-sm" %>
+</div>
+<section class="mt-4">
 <p>
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Show comments...
@@ -13,9 +14,12 @@
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-    <h2>Comments</h2>
-    <%= render @article.comments %>
-    <h2> Add a comment: </h2>
-    <%= render 'comments/form' %>
+    <h2 class="mb-5">Comments</h2>
+    <%= render @article.comments, class:"list-group list-group-flush" %>
+    <article class="card card-body shadow">
+      <h2> Add a comment: </h2>
+      <%= render 'comments/form' %>
+    </article>
   </div>
 </div>
+</section>
