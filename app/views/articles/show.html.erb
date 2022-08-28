@@ -1,5 +1,4 @@
-<h1> <%= @article.title%> </h1>
-<p> <%= @article.body %> </p>
+<%= render @article %>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
@@ -7,7 +6,16 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
-<h2>Comments</h2>
-<%= render @article.comments %>
-<h2> Add a comment: </h2>
-<%= render 'comments/form' %>
+<p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Show comments...
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <h2>Comments</h2>
+    <%= render @article.comments %>
+    <h2> Add a comment: </h2>
+    <%= render 'comments/form' %>
+  </div>
+</div>
