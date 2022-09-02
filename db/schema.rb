@@ -34,6 +34,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_163023) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer "followed"
+    t.integer "follower"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
