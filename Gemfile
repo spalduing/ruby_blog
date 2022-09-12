@@ -17,6 +17,8 @@ gem 'dotenv-rails', groups: %i[development test]
 
 gem 'cssbundling-rails'
 
+gem 'devise'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
