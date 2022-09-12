@@ -59,19 +59,6 @@ Rails.application.configure do
   }
 
 
-<<<<<<< Updated upstream
-=======
-  config.action_mailer.perform_deliveries = true
-  # config.action_mailer.delivery_method = :smtp
-
-
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_API_KEY'].to_s,
-    domain: ENV['MAILGUN_DOMAIN'].to_s
-  }
-
->>>>>>> Stashed changes
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
