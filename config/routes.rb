@@ -5,13 +5,16 @@ Rails.application.routes.draw do
              controllers: { sessions: 'users/sessions', registrations: 'users/registrations',
                             confirmations: 'users/confirmations', passwords: 'users/passwords',
                             unlocks: 'users/unlocks' }
+
   root 'articles#index'
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :articles do
     resources :comments
   end
-  # Defines the root path route ("/")
 
-  # root "articles#index"
+  resources :users
+  post '/articles/:id/follow', to: 'articles#follow', as: 'follow_user'
+  post '/articles/:id/unfollow', to: 'articles#unfollow', as: 'unfollow_user'
+  get '/articles/:id/followers', to: 'articles#followers', as: 'user_followers'
+  get '/articles/:id/followings', to: 'articles#followings', as: 'user_followings'
 end

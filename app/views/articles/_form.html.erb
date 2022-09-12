@@ -1,25 +1,26 @@
 <%= form_with model: article do |form| %>
   <div class="form-group mb-3">
     <%= form.label :title ,class: "form-label", for:"validationTitle" %><br>
-    <%= form.text_field :title, class:"form-control form-control-lg ", id:"validationTitle", required: true %>
-    <%= article.errors.full_messages_for(:title).each do |message| %>
-      <div id="${message}" class="invalid-feedback"><%= message %></div>
-    <% end %>
+    <%= form.text_field :title, class:"form-control form-control-lg ", id:"validationTitle", required: false %><br>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+          <div id="${message}" class="alert alert-danger" role="alert" ><%= message %></div>
+      <% end %>
   </div>
-
   <div class="form-group mb-3">
     <%= form.label :body ,class: "form-label", for:"validationBody" %><br>
-    <%= form.text_area :body, class:"form-control form-control-lg  ", id:"validationBody", required: true %><br>
-    <%= article.errors.full_messages_for(:body).each do |message| %>
-      <div id="${message}" class="invalid-feedback"><%= message %></div>
+    <%= form.text_area :body, class:"form-control form-control-lg  ", id:"validationBody", required: false %><br>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+      <div id="${message}" class="alert alert-danger" role="alert" ><%= message %></div>
     <% end %>
   </div>
-
   <div class="form-group mb-3">
     <%= form.label :status ,class: "form-label" %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-select form-select-lg" %>
   </div>
-
+  <div class="form-group mb-3">
+    <%= form.hidden_field  :user_id, class:"form-control form-control-lg ", :value => (@author_id),
+        id:"articleAuthor", required: true %>
+  </div>
   <div class="form-group mt-5">
     <%= form.submit class:"btn btn-primary btn-lg" %>
     <%= link_to "Back to articles", articles_path, class:"btn btn-outline-primary btn-lg" %>

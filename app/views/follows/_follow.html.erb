@@ -1,0 +1,21 @@
+<section id="all-links">
+  <% if @article.user.id == current_user.id %>
+    <div></div>
+  <% elsif current_user.followings.include?(@article_author_user) %>
+    <h5><%= button_to "Unfollow", unfollow_user_path,  data: {
+                    turbo_method: :post,
+                  }, class:'btn btn-primary' %></h5>
+  <% else %>
+    <h5><%= button_to "Follow", follow_user_path, method: "POST", class:'btn btn-primary'  %></h5>
+  <% end%>
+    <strong>
+      <p>
+        <%= link_to "Followers: #{@article_author_user.followers.length} ",
+           user_followers_path(@article) %>
+      </p>
+      <p>
+        <%= link_to "Following : #{@article_author_user.followings.length}", user_followings_path(@article) %>
+      </p>
+    </strong>
+  <br>
+</section>
