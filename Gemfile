@@ -19,6 +19,8 @@ gem 'cssbundling-rails'
 
 gem 'devise'
 
+gem 'mailgun-ruby', '~>1.2.5'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
