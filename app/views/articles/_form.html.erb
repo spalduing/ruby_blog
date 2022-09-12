@@ -20,6 +20,12 @@
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-select form-select-lg" %>
   </div>
 
+
+    <div class="form-group mb-3">
+    <%= form.hidden_field  :user_id, class:"form-control form-control-lg ", :value => (@author_id),
+     id:"articleAuthor", required: true %>
+  </div>
+
   <div class="form-group mt-5">
     <%= form.submit class:"btn btn-primary btn-lg" %>
     <%= link_to "Back to articles", articles_path, class:"btn btn-outline-primary btn-lg" %>
