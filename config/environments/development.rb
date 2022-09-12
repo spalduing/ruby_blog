@@ -45,6 +45,19 @@ Rails.application.configure do
 
   # Set actionmailer host to localhost
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.smtp_settings = {
+    domain: 'heroku.com',
+    address: ENV['MAILGUN_SMTP_SERVER'].to_s,
+    port: ENV['MAILGUN_SMTP_PORT'].to_s,
+    user_name: ENV['MAILGUN_SMTP_LOGIN'].to_s,
+    password: ENV['MAILGUN_SMTP_PASSWORD'].to_s,
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
