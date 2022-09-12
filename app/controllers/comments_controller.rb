@@ -4,7 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    if !follow_author?
+    else
+      @comment = @article.comments.create(comment_params)
+    end
     redirect_to article_path(@article)
   end
 
@@ -17,6 +20,14 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def follow_author?
+    @current_article = Article.find(params[:article_id])
+    @author_id = @current_article.user.id
+    @article_author_user = User.find(@author_id)
+
+    current_user.followings.include?(@article_author_user)
+  end
 
   def comment_params
     params.require(:comment).permit(:commenter, :body, :status)

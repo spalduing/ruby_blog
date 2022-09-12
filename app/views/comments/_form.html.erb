@@ -18,9 +18,15 @@
     </p>
   </div>
   <p>
-    <%= form.submit class:"btn btn-primary btn-lg"%>
-    <%= link_to "Cancel", article_path(@article) , data: {
+    <% if !current_user.followings.include?(@article_author_user) %>
+      <strong>
+        <p>You must follow the author of the article to be able to post comments</p>
+      </strong>
+    <% else %>
+      <%= form.submit class:"btn btn-primary btn-lg"%>
+      <%= link_to "Cancel", article_path(@article) , data: {
                     turbo_confirm: "Are you sure to cancel the comment?"
                   },  class:"btn btn-secondary btn-lg" %>
+    <% end %>
   </p>
 <% end %>

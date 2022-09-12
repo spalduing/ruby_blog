@@ -1,3 +1,10 @@
 <h1> <%= article.title%> </h1>
-<p> <%= article.body %> </p>
-
+<% if current_page?(articles_path) %>
+  <% if article.body.split().length <= 60 %>
+    <p> <%= "#{article.body.split.slice(0, 60).join(" ")}" %> </p>
+  <%elsif%>
+    <p> <%= "#{article.body.split.slice(0, 60).join(" ")}..." %> </p>
+  <% end %>
+<% else %>
+  <p> <%= article.body %> </p>
+<%end%>
