@@ -2,14 +2,14 @@
   <% unless comment.archived? %>
     <div class="card-header">
       <p>
-        <strong>Commenter:</strong>
-        <%= comment.commenter%>
+        <strong>
+          <%= comment.commenter%>
+        </strong>
       </p>
     </div>
 
     <div class="card-body">
       <p>
-        <strong>Comment:</strong>
         <%= comment.body%>
       </p>
     </div>
