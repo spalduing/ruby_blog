@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
   post '/articles/:id/follow', to: 'articles#follow', as: 'follow_user'
   post '/articles/:id/unfollow', to: 'articles#unfollow', as: 'unfollow_user'
   get '/articles/:id/followers', to: 'articles#followers', as: 'user_followers'

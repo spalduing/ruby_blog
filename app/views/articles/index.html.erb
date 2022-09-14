@@ -8,7 +8,7 @@
   </div>
   <ul class="list-group list-group-flush">
     <% @articles.each do |article|%>
-      <% unless article.archived? %>
+      <% unless private_or_archived? article %>
         <li class="list-group-item card shadow mb-3">
           <article class="card card-body ">
             <%= render article %>

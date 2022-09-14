@@ -1,5 +1,5 @@
 <div class="card shadow  mb-4">
-  <% unless comment.archived? %>
+  <% unless private_or_archived? comment %>
     <div class="card-header">
       <p>
         <strong>
@@ -7,20 +7,20 @@
         </strong>
       </p>
     </div>
-
     <div class="card-body">
       <p>
         <%= comment.body%>
       </p>
     </div>
-
-<div class="card-footer">
-    <p>
-      <%= link_to "Destroy Comment", [comment.article, comment], data: {
+    <div class="card-footer">
+      <% unless current_user_not_commenter comment %>
+        <p>
+          <%= link_to "Destroy Comment", [comment.article, comment], data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
               }, class: "btn btn-danger ms-4" %>
-    </p>
-</div>
+        </p>
+      <%end%>
+    </div>
   <% end %>
 </div>
