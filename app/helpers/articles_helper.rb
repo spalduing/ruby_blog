@@ -7,7 +7,8 @@ module ArticlesHelper
     article.body
   end
 
-  def private_or_archived?(article)
-    article.archived? || article.private?
+  def display_article?(article)
+    article_seen_by_author = (current_user == article.user)
+    !article.archived? && (!article.private? || (article.private? && article_seen_by_author))
   end
 end

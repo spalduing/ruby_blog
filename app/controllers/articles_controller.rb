@@ -54,7 +54,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if same_author? @article_author_user && @article.update(article_params)
+
+    if (same_author? @article_author_user) && @article.update(article_params)
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity

@@ -1,9 +1,9 @@
 <div class="card shadow  mb-4">
-  <% unless private_or_archived? comment %>
+  <% if display_comment? comment %>
     <div class="card-header">
       <p>
         <strong>
-          <%= comment.commenter%>
+          <%= comment.user.email%>
         </strong>
       </p>
     </div>
@@ -13,7 +13,7 @@
       </p>
     </div>
     <div class="card-footer">
-      <% unless current_user_not_commenter comment %>
+      <% if current_user_commenter? comment %>
         <p>
           <%= link_to "Destroy Comment", [comment.article, comment], data: {
                 turbo_method: :delete,
