@@ -1,24 +1,6 @@
-# README
+# If you want to see the current state of the blog go to
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://enigmatic-falls-62442.herokuapp.com/users/sign_in
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
